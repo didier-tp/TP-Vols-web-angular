@@ -27,15 +27,16 @@
 		</tr>
 		<tr>
 			<td colspan="11">
-			<button type="button" class="btn btn-success btn-md" ng-click="reservationCtrl.add()">
+				<button type="button" class="btn btn-success btn-md"
+					ng-click="reservationCtrl.add()">
 					<span class="glyphicon glyphicon-plus"></span>
-			</button>
+				</button>
 			</td>
 		</tr>
 	</table>
 
 	<div class="panel panel-default" ng-show="reservationCtrl.reservation">
-		<div class="panel-heading">Edition de la réservation</div>
+		<div class="panel-heading">Edition de la reservation</div>
 		<div class="panel-body">
 			<form name="reservationCtrl.reservationForm" class="form-horizontal"
 				novalidate>
@@ -48,7 +49,7 @@
 					<div class="col-sm-10">
 						<div class="col-sm-10">
 							<input type="number" class="form-control" id="numero"
-								ng-model="reservationCtrl.reservation.numero">
+								ng-model="reservationCtrl.reservation.numero" required>
 						</div>
 					</div>
 				</div>
@@ -56,21 +57,46 @@
 					<label class="control-label col-sm-2" for="nom">Date</label>
 					<div class="col-sm-10">
 						<input type="date" class="form-control" id="date"
-							ng-model="reservationCtrl.reservation.date">
+							ng-model="reservationCtrl.reservation.date" required>
 					</div>
 				</div>
-				
+					<div class="form-group">
+					<label class="control-label col-sm-2" for="volId">Numero d'identifiant du vol</label>
+					<div class="col-sm-10">
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="volId"
+								ng-model="reservationCtrl.vol.id">
+						</div>
+					</div>
+				</div>
+					<div class="form-group">
+					<label class="control-label col-sm-2" for="passagerId">Numero d'identifiant du passager</label>
+					<div class="col-sm-10">
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="passagerId"
+								ng-model="reservationCtrl.reservation.passager.id">
+						</div>
+					</div>
+				</div>
+					<div class="form-group">
+					<label class="control-label col-sm-2" for="clientId">Numero d'identifiant du client</label>
+					<div class="col-sm-10">
+						<div class="col-sm-10">
+							<input type="number" class="form-control" id="clientId"
+								ng-model="reservationCtrl.reservation.client.id">
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="btn btn-success"
-							ng-click="reservationCtrl.reservationForm.$valid && reservationCtrl.save()">
-							<span class="glyphicon glyphicon-floppy-disk"></span>
-						</button>
-					</div>
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="btn btn-default"
-							ng-click="reservationCtrl.cancel()">Annuler</button>
-					</div>
+					<button type="button" class="btn btn-success"
+						ng-click="reservationCtrl.reservationForm.$valid && reservationCtrl.save()">
+						<span class="glyphicon glyphicon-floppy-disk"></span>
+					</button>
+					<button type="button" class="btn btn-default"
+						ng-click="reservationCtrl.cancel()">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
 				</div>
 			</form>
 		</div>

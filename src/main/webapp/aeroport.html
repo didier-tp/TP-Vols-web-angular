@@ -1,19 +1,21 @@
 <meta charset="UTF-8">
 
 <fieldset>
-	<legend>Aeroport</legend>
+	<br />
+	<legend>Liste des aéroports</legend>
 	<table class="table table-striped">
 		<tr>
 			<th>Id</th>
-			<th>Nom Aéroport</th>
+			<th>Nom aéroport</th>
+			<th></th>
 
 		</tr>
 		<tr ng-repeat="aeroport in aeroportCtrl.aeroports">
 			<td>{{aeroport.id}}</td>
 			<td>{{aeroport.nom}}</td>
-		
+
 			<td><button type="button" class="btn btn-info btn-xs"
-					ng-click="aeroportCtrl.edit(reservation.id)">
+					ng-click="aeroportCtrl.edit(aeroport.id)">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 				<button type="button" class="btn btn-danger btn-xs"
@@ -27,5 +29,39 @@
 					<span class="glyphicon glyphicon-plus"></span>
 				</button></td>
 	</table>
-	
+
+		<div class="panel panel-default" ng-show="aeroportCtrl.aeroport">
+		<div class="panel-heading">Edition de l'aeroport</div>
+		<div class="panel-body">
+			<form name="aeroportCtrl.aeroportForm" class="form-horizontal" novalidate>
+				<input type="hidden" id="id"
+							ng-model="aeroportCtrl.aeroport.id">
+							<input type="hidden" id="version"
+							ng-model="aeroportCtrl.aeroport.version">
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="aeroport">nom :</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="aeroport"
+							ng-model="aeroportCtrl.aeroport.nom" required>
+					</div>
+				</div>
+				
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-success"
+							ng-click="aeroportCtrl.aeroportForm.$valid && aeroportCtrl.save()">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+						</button>
+					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-default"
+							ng-click="aeroportCtrl.cancel()">Annuler</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
 </fieldset>
