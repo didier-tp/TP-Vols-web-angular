@@ -2,32 +2,58 @@
 <html ng-app="PremierPas">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controllers/****.js"></script>
-    <script type="text/javascript" src="js/controllers/****.js"></script>
+<meta charset="UTF-8">
+<title>Home</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet">
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers/****.js"></script>
+<script type="text/javascript" src="js/controllers/****.js"></script>
 </head>
 
 <body>
 
-    <div class="container" ng-controller="HomeController as homeCtrl">
+	<div class="container" ng-controller="HomeController as homeCtrl">
 
-        <ul class="nav nav-pills">
-            <li ng-class="{active:homeCtrl.isTab('home')}"><a ng-click="homeCtrl.setTab('home')">Accueil</a></li>
-            <li ng-class="{active:homeCtrl.isTab('*******')}"><a ng-click="homeCtrl.setTab('*****')">******</a></li>
-            <li ng-class="{active:homeCtrl.isTab('******')}"><a ng-click="homeCtrl.setTab('*******')">*********</a></li>
-        </ul>
+		<ul class="nav nav-pills">
+			<li ng-class="{active:homeCtrl.isTab('home')}"><a
+				ng-click="homeCtrl.setTab('home')">Accueil</a></li>
+			<li ng-class="{active:homeCtrl.isTab('ville')}"><a
+				ng-click="homeCtrl.setTab('ville')">Ville</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Vols</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Compagnie Aérienne</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Client</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Login</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Passager</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Réservation</a></li>
+			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+				ng-click="homeCtrl.setTab('vol')">Aéroports</a></li>
+		</ul>
 
-        <********-manager ng-show="homeCtrl.isTab('******')">
-        </********-manager>
+		<ville-manager ng-show="homeCtrl.isTab('ville')"> </ville-manager>
+		<vol-manager ng-show="homeCtrl.isTab('vol')"> </vol-manager>
+		<compagnieAerienne-manager
+			ng-show="homeCtrl.isTab('compagnieAerienne')">
+		</compagnieAerienne-manager>
+		<client-manager ng-show="homeCtrl.isTab('client')"> </client-manager>
+		<login-manager ng-show="homeCtrl.isTab('login')"> </login-manager>
+		<passager-manager ng-show="homeCtrl.isTab('passager')">
+		</passager-manager>
+		<reservation-manager ng-show="homeCtrl.isTab('reservation')">
+		</reservation-manager>
+		<aeroport-manager ng-show="homeCtrl.isTab('aeroport')">
+		</aeroport-manager>
 
 
 
-    </div>
+	</div>
 
 </body>
 
