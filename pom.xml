@@ -14,7 +14,7 @@
 		</dependency-->
 		<dependency>
 			<groupId>formation.sopra</groupId>
-			<artifactId>formation-jpa-angular</artifactId>
+			<artifactId>TP-Vols-angular</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
