@@ -1,0 +1,94 @@
+<meta charset="UTF-8">
+<fieldset >
+	<legend>Formateur</legend>
+	<table class="table table-striped">
+		<tr>
+			<th>Identifiant</th>
+			<th>Login</th>
+			<th>Mot de Passe</th>
+			<th>Accès Admin</th>
+			<th>Id Client associé</th>
+			
+			<th></th>
+		</tr>
+		<tr ng-repeat="passager in passagerCtrl.passagers">
+			<td>{{passager.id}}</td>
+			<td>{{passager.passager}}</td>
+			<td>{{passager.motDePasse}}</td>
+			<td>{{passager.admin}}</td>
+			<td>{{passager.client}}</td>
+			
+			<td><button type="button" class="btn btn-info btn-xs"
+					ng-click="passagerCtrl.edit(passager.id)">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger btn-xs"
+					ng-click="passagerCtrl.remove(passager.id)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button></td>
+		</tr>
+		<tr>
+			<td colspan="8"><button type="button"
+					class="btn btn-success btn-md" ng-click="passagerCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+	</table>
+
+	<div class="panel panel-default" ng-show="passagerCtrl.passager">
+		<div class="panel-heading">Edition du passager</div>
+		<div class="panel-body">
+			<form name="passagerCtrl.passagerForm" class="form-horizontal" novalidate>
+				<input type="hidden" id="id"
+							ng-model="passagerCtrl.passager.id">
+							<input type="hidden" id="version"
+							ng-model="passagerCtrl.passager.version">
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="passager">passager:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="passager"
+							ng-model="passagerCtrl.passager.passager" required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="motDePasse">Mot De Passe:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="motDePasse"
+							ng-model="passagerCtrl.passager.motDePasse" required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="admin">admin:</label>
+					<div class="col-sm-10">
+						<input type="checkbox" class="form-control" id="admin"
+							ng-model="passagerCtrl.passager.admin">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="client">Id Client:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="client"
+							ng-model="passagerCtrl.passager.client">
+					</div>
+				</div>
+			
+			
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-success"
+							ng-click="passagerCtrl.passagerForm.$valid && passagerCtrl.save()">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+						</button>
+					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-default"
+							ng-click="passagerCtrl.cancel()">Annuler</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</fieldset>
