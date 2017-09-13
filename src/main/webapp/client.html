@@ -4,19 +4,34 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Identifiant</th>
-			<th>Login</th>
-			<th>Mot de Passe</th>
-			<th>Accès Admin</th>
-			<th>Id Client associé</th>
+			<th>Titre</th>
+			<th>Siret</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Rue</th>
+			<th>Code Postal</th>
+			<th>Ville</th>
+			<th>Pays</th>
+			<th>Email</th>
+			<th>Telephone</th>
+			<th>Fax</th>
 			
 			<th></th>
 		</tr>
 		<tr ng-repeat="client in clientCtrl.clients">
 			<td>{{client.id}}</td>
-			<td>{{client.client}}</td>
-			<td>{{client.motDePasse}}</td>
-			<td>{{client.admin}}</td>
-			<td>{{client.client}}</td>
+			<td>{{client.titre}}</td>
+			<td>{{client.siret}}</td>
+			<td>{{client.nom}}</td>
+			<td>{{client.prenom}}</td>
+			<td>{{client.adresse.adresse}}</td>
+			<td>{{client.adresse.codePostal}}</td>
+			<td>{{client.adresse.ville}}</td>
+			<td>{{client.adresse.pays}}</td>
+			<td>{{client.email}}</td>
+			<td>{{client.numeroTel}}</td>
+			<td>{{client.numeroFax}}</td>
+			
 			
 			<td><button type="button" class="btn btn-info btn-xs"
 					ng-click="clientCtrl.edit(client.id)">
@@ -28,10 +43,19 @@
 				</button></td>
 		</tr>
 		<tr>
-			<td colspan="8"><button type="button"
+			<td colspan="11"><button type="button"
 					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button></td>
+				<td colspan="8"><button type="button"
+					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+				<td colspan="8"><button type="button"
+					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+				</tr>
 	</table>
 
 	<div class="panel panel-default" ng-show="clientCtrl.client">
@@ -44,34 +68,90 @@
 							ng-model="clientCtrl.client.version">
 				
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="client">client:</label>
+					<label class="control-label col-sm-2" for="titre">titre:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="client"
-							ng-model="clientCtrl.client.client" required>
+						<input type="text" class="form-control" id="titre"
+							ng-model="clientCtrl.client.titre" required>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="motDePasse">Mot De Passe:</label>
+					<label class="control-label col-sm-2" for="siret">Siret:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="motDePasse"
-							ng-model="clientCtrl.client.motDePasse" required>
+						<input type="number" class="form-control" id="siret"
+							ng-model="clientCtrl.client.siret">
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="admin">admin:</label>
+					<label class="control-label col-sm-2" for="nom">Nom:</label>
 					<div class="col-sm-10">
-						<input type="checkbox" class="form-control" id="admin"
-							ng-model="clientCtrl.client.admin">
+						<input type="text" class="form-control" id="nom"
+							ng-model="clientCtrl.client.nom" required>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="client">Id Client:</label>
+					<label class="control-label col-sm-2" for="prenom">Prenom:</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" id="client"
-							ng-model="clientCtrl.client.client">
+						<input type="text" class="form-control" id="prenom"
+							ng-model="clientCtrl.client.prenom">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="rue">Rue:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="rue"
+							ng-model="clientCtrl.client.adresse.adresse">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="codePostal">Code Postal:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="codePostal"
+							ng-model="clientCtrl.client.adresse.codePostal">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="ville">Ville:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="ville"
+							ng-model="clientCtrl.client.adresse.ville">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="pays">Pays:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="pays"
+							ng-model="clientCtrl.client.adresse.pays">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="email">@:</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="email"
+							ng-model="clientCtrl.client.email">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="numeroTel">Téléphone:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="numeroTel"
+							ng-model="clientCtrl.client.numeroTel">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="numeroFax">Fax:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="numeroFax"
+							ng-model="clientCtrl.client.numeroFax">
 					</div>
 				</div>
 			
