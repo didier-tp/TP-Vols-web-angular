@@ -75,6 +75,8 @@ public class ReservationRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			reservation.setId(id);
+			reservation.setVersion(tmp.getVersion());
 			daoReservation.update(reservation);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
