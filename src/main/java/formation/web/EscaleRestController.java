@@ -23,6 +23,7 @@ import vol.metier.dao.AeroportDao;
 import vol.metier.dao.EscaleDao;
 import vol.metier.dao.VolDao;
 import vol.metier.model.Escale;
+import vol.metier.model.EscaleId;
 import vol.metier.model.Views;
 
 /**
@@ -49,27 +50,25 @@ public class EscaleRestController {
 
 	@RequestMapping(value = "/escale", method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Escale escale, UriComponentsBuilder uCB) {
-		Escale tmp = (Escale) daoEscale.find(escale.);
-		if (tmp == null) {
-			daoEscale.create(escale);
-			URI uri = uCB.path("/escale/{id}")
-					.buildAndExpand(escale.getId().getFormateur().getId() + ":" + escale.getId().getMatiere().getCode())
-					.toUri();
-			HttpHeaders header = new HttpHeaders();
-			header.setLocation(uri);
-			return new ResponseEntity<>(header, HttpStatus.CREATED);
-		} else {
-			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
+
+		daoEscale.create(escale);
+		URI uri = uCB.path("/escale/{id}").buildAndExpand(escale.getAeroport().getId() + ":" + escale.getVol().getId())
+				.toUri();
+		HttpHeaders header = new HttpHeaders();
+		header.setLocation(uri);
+		return new ResponseEntity<>(header, HttpStatus.CREATED);
+
 	}
 
 	@RequestMapping(value = "/escale/{id}", method = RequestMethod.GET)
 	@JsonView(Views.Escale.class)
 	public ResponseEntity<Escale> find(@PathVariable("id") String id) {
-		Integer idFormateur = Integer.valueOf(id.split(":")[0]);
-		Integer idMatiere = Integer.valueOf(id.split(":")[1]);
+		Long idAeroport = Long.valueOf(id.split(":")[0]);
+		Long idVol = Long.valueOf(id.split(":")[1]);
 
-		EscaleKey idEscale = new EscaleKey((Formateur) daoPersonne.find(idFormateur), daoMatiere.find(idMatiere));
+		EscaleId idEscale = new EscaleId();
+		idEscale.setAeroport(idAeroport);
+		idEscale.setVol(idVol);
 
 		Escale tmp = (Escale) daoEscale.find(idEscale);
 
@@ -82,10 +81,12 @@ public class EscaleRestController {
 
 	@RequestMapping(value = "/escale/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable("id") String id) {
-		Integer idFormateur = Integer.valueOf(id.split(":")[0]);
-		Integer idMatiere = Integer.valueOf(id.split(":")[1]);
+		Long idAeroport = Long.valueOf(id.split(":")[0]);
+		Long idVol = Long.valueOf(id.split(":")[1]);
 
-		EscaleKey idEscale = new EscaleKey((Formateur) daoPersonne.find(idFormateur), daoMatiere.find(idMatiere));
+		EscaleId idEscale = new EscaleId();
+		idEscale.setAeroport(idAeroport);
+		idEscale.setVol(idVol);
 
 		Escale tmp = (Escale) daoEscale.find(idEscale);
 		if (tmp == null) {
@@ -98,11 +99,12 @@ public class EscaleRestController {
 
 	@RequestMapping(value = "/escale/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable("id") String id, @RequestBody Escale escale) {
-		Integer idFormateur = Integer.valueOf(id.split(":")[0]);
-		Integer idMatiere = Integer.valueOf(id.split(":")[1]);
+		Long idAeroport = Long.valueOf(id.split(":")[0]);
+		Long idVol = Long.valueOf(id.split(":")[1]);
 
-		EscaleKey idEscale = new EscaleKey((Formateur) daoPersonne.find(idFormateur), daoMatiere.find(idMatiere));
-
+		EscaleId idEscale = new EscaleId();
+		idEscale.setAeroport(idAeroport);
+		idEscale.setVol(idVol);
 		Escale tmp = (Escale) daoEscale.find(idEscale);
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
