@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <fieldset >
-	<legend>Formateur</legend>
+	<legend>Client</legend>
 	<table class="table table-striped">
 		<tr>
 			<th>Identifiant</th>
@@ -44,16 +44,16 @@
 		</tr>
 		<tr>
 			<td colspan="3"><button type="button"
-					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
-					<span class="glyphicon glyphicon-plus"></span>
+					class="btn btn-success btn-md" ng-click="clientCtrl.addClientPhysique()">
+					New Client Physique
 				</button></td>
-				<td colspan="3"><button type="button"
-					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
-					<span class="glyphicon glyphicon-plus"></span>
+				<td colspan="4"><button type="button"
+					class="btn btn-success btn-md" ng-click="clientCtrl.addClientMoral()">
+					New Client Moral
 				</button></td>
-				<td colspan="3"><button type="button"
-					class="btn btn-success btn-md" ng-click="clientCtrl.add()">
-					<span class="glyphicon glyphicon-plus"></span>
+				<td colspan="5"><button type="button"
+					class="btn btn-success btn-md" ng-click="clientCtrl.addClientEI()">
+					New Client EI
 				</button></td>
 				</tr>
 	</table>
@@ -67,15 +67,42 @@
 							<input type="hidden" id="version"
 							ng-model="clientCtrl.client.version">
 				
-				<div class="form-group">
+				
+				
+				<div ng-show="clientCtrl.isType('Physique')" class="form-group">
 					<label class="control-label col-sm-2" for="titre">titre:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="titre"
-							ng-model="clientCtrl.client.titre" required>
+						<select id="titre" ng-model="clientCtrl.client.titre"
+							class="form-control" required>
+							<option value="">Choisir un titre</option>
+							<option value="{{titre}}" ng-repeat="titre in homeCtrl.titrePhysique">{{titre}}</option>
+						</select>
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<div ng-show="clientCtrl.isType('Moral')" class="form-group">
+					<label  class="control-label col-sm-2" for="titre">titre:</label>
+					<div class="col-sm-10">
+						<select id="titre" ng-model="clientCtrl.client.titre"
+							class="form-control" required>
+							<option value="">Choisir un titre</option>
+							<option value="{{titre}}" ng-repeat="titre in homeCtrl.titreMoral">{{titre}}</option>
+						</select>
+					</div>
+				</div>
+				
+				<div ng-show="clientCtrl.isType('EI')" class="form-group">
+					<label class="control-label col-sm-2" for="titre">titre:</label>
+					<div class="col-sm-10">
+						<select id="titre" ng-model="clientCtrl.client.titre"
+							class="form-control" required>
+							<option value="">Choisir un titre</option>
+							<option value="{{titre}}" ng-repeat="titre in homeCtrl.titrePhysique">{{titre}}</option>
+						</select>
+					</div>
+				</div>
+				
+				<div ng-show="clientCtrl.isType('Moral')" class="form-group">
 					<label class="control-label col-sm-2" for="siret">Siret:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="siret"
@@ -91,7 +118,15 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
+				<div ng-show="clientCtrl.isType('Physique')" class="form-group">
+					<label class="control-label col-sm-2" for="prenom">Prenom:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="prenom"
+							ng-model="clientCtrl.client.prenom">
+					</div>
+				</div>
+				
+				<div ng-show="clientCtrl.isType('EI')" class="form-group">
 					<label class="control-label col-sm-2" for="prenom">Prenom:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="prenom"
@@ -157,12 +192,27 @@
 			
 			
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
+					<div ng-show="clientCtrl.isType('Physique')" class="col-sm-offset-2 col-sm-10">
 						<button type="button" class="btn btn-success"
-							ng-click="clientCtrl.clientForm.$valid && clientCtrl.save()">
+							ng-click="clientCtrl.clientForm.$valid && clientCtrl.saveClientPhysique()">
 							<span class="glyphicon glyphicon-floppy-disk"></span>
 						</button>
 					</div>
+					
+					<div ng-show="clientCtrl.isType('Moral')" class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-success"
+							ng-click="clientCtrl.clientForm.$valid && clientCtrl.saveClientMoral()">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+						</button>
+					</div>
+					
+					<div ng-show="clientCtrl.isType('EI')" class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-success"
+							ng-click="clientCtrl.clientForm.$valid && clientCtrl.saveClientEI()">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+						</button>
+					</div>
+					
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" class="btn btn-default"
 							ng-click="clientCtrl.cancel()">Annuler</button>
