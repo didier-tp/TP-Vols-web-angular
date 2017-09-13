@@ -28,7 +28,7 @@
 				self.edit = function(id) {
 					$http({
 						method : 'GET',
-						url : 'api/reservation/' + id.toString()
+						url : 'api/reservation/' + id
 					}).then(
 							function(response) {
 								self.reservation = response.data;
@@ -40,7 +40,7 @@
 					if (self.reservation.id != null) {
 						$http({
 							method : 'PUT',
-							url : 'api/reservation/' + self.reservation.id.toString(),
+							url : 'api/reservation/' + self.reservation.id,
 							data : self.reservation
 						}).then(function(response) {
 							self.cancel();
@@ -64,7 +64,7 @@
 				self.remove = function(id) {
 					$http({
 						method : 'DELETE',
-						url : 'api/reservation/' + id.toString()
+						url : 'api/reservation/' + id
 					}).then(function(response) {
 						self.list();
 					}, function(response) {
