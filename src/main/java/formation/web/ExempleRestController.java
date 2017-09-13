@@ -25,7 +25,7 @@ import formation.jpa.model.Salle;
  *
  */
 @RestController
-public class SalleRestController {
+public class ExempleRestController {
 
 	@Autowired
 	private DaoSalle daoSalle;
