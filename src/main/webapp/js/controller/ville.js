@@ -47,11 +47,11 @@
 						}, function(response) {
 						});
 					} else {
-						console.log(self.formateur);
+				
 						$http({
 							method : 'POST',
 							url : 'api/ville/',
-							data : self.formateur
+							data : self.ville
 						}).then(function(response) {
 							self.cancel();
 							self.list();
@@ -63,7 +63,7 @@
 				self.remove = function(id) {
 					$http({
 						method : 'DELETE',
-						url : 'api/ville/' + id
+						url : 'api/ville/'+ id
 					}).then(function(response) {
 						self.list();
 					}, function(response) {
