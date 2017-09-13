@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<fieldset>
+	<legend>Reservation</legend>
+	<table class="table table-striped">
+		<tr>
+			<th>Numéro</th>
+			<th>Date</th>
+			<th>Vol</th>
+			<th>Passager</th>
+			<th>Client</th>
+			<th></th>
+		</tr>
+		<tr ng-repeat="reservation in reservationCtrl.reservations">
+			<td>{{reservation.numero}}</td>
+			<td>{{reservation.date | date:'dd/MM/yyyy'}}</td>
+			<td>{{reservation.vol.id}}</td>
+			<td>{{reservation.passager.id}}</td>
+			<td>{{reservation.client.id}}</td>
+			<td><button type="button" class="btn btn-info btn-xs"
+					ng-click="reservationCtrl.edit(reservation.id)">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger btn-xs"
+					ng-click="reservationCtrl.remove(reservation.id)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button></td>
+		</tr>
+		<tr>
+			<td colspan="11"><button type="button"
+					class="btn btn-success btn-md" ng-click="reservationCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+	</table>
+	
+</fieldset>

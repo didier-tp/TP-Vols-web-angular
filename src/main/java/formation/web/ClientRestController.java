@@ -79,6 +79,7 @@ public class ClientRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			
 			daoClient.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -90,6 +91,8 @@ public class ClientRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			client.setId(id);
+			client.setVersion(tmp.getVersion());
 			daoClient.update(client);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
@@ -101,6 +104,8 @@ public class ClientRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			client.setId(id);
+			client.setVersion(tmp.getVersion());
 			daoClient.update(client);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
@@ -112,6 +117,8 @@ public class ClientRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			client.setId(id);
+			client.setVersion(tmp.getVersion());
 			daoClient.update(client);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}

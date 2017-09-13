@@ -64,6 +64,8 @@ public class LoginRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			login.setId(id);
+			login.setVersion(tmp.getVersion());
 			daoLogin.update(login);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
