@@ -64,7 +64,7 @@ public class ReservationRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			daoReservation.delete(tmp);
+			daoReservation.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
@@ -75,12 +75,7 @@ public class ReservationRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			tmp.setDate(reservation.getDate() != null ? reservation.getDate() : tmp.getDate());
-			tmp.setNumero(reservation.getNumero() != null ? reservation.getNumero() : tmp.getNumero());
-			tmp.setPassager(reservation.getPassager() != null ? reservation.getPassager() : tmp.getPassager());
-			tmp.setClient(reservation.getClient() != null ? reservation.getClient() : tmp.getClient());
-			tmp.setVol(reservation.getVol() != null ? reservation.getVol() : tmp.getVol());
-			daoReservation.update(tmp);
+			daoReservation.update(reservation);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 	}
