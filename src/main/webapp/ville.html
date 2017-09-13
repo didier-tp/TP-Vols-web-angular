@@ -3,12 +3,12 @@
 	<legend>Villes</legend>
 	<table class="table table-striped">
 		<tr>
-			<th>Id :</th>
+			
 			<th>Nom :</th>
 
 		</tr>
-		<tr ng-repeat="reservation in reservationCtrl.reservations">
-			<td>{{ville.id}}</td>
+		<tr ng-repeat="ville in villeCtrl.villes">
+			
 			<td>{{ville.nom}}</td>
 			<td><button type="button" class="btn btn-info btn-xs"
 					ng-click="villeCtrl.edit(ville.id)">
