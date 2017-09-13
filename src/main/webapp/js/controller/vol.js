@@ -5,7 +5,7 @@
 		return {
 			restrict : 'E',
 			templateUrl : 'vol.html',
-			controller : function($http) {
+			controller : function($http, $filter) {
 
 				var self = this;
 
@@ -43,14 +43,27 @@
 					$http({
 						method : 'GET',
 						url : 'api/vol/' + id
-					}).then(function(response) {
-						self.vol = response.data;
-					}, function(response) {
-					});
+					}).then(
+							function(response) {
+								self.vol = response.data;
+								self.vol.dateDepart = new Date(
+										self.vol.dateDepart);
+								self.vol.dateArrivee = new Date(
+										self.vol.dateArrivee);
+								console.log(self.vol.heureDepart);
+								self.vol.heureDepart = new Date(
+										self.vol.heureDepart);
+								console.log(self.vol.heureDepart);
+								self.vol.heureArrivee = new Date(
+										self.vol.heureArrivee);
+								console.log(self.vol);
+							}, function(response) {
+							});
 				};
 
 				self.save = function() {
 					if (self.vol.id != null) {
+						console.log(self.vol);
 						$http({
 							method : 'PUT',
 							url : 'api/vol/' + self.vol.id,

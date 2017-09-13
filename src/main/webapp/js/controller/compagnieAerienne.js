@@ -31,13 +31,13 @@
 						url : 'api/compagnieAerienne/' + id
 					}).then(
 							function(response) {
-								self.reservation = response.data;
+								self.compagnieAerienne = response.data;
 							}, function(response) {
 							});
 				};
 
 				self.save = function() {
-					if (self.reservation.id != null) {
+					if (self.compagnieAerienne.id != null) {
 						$http({
 							method : 'PUT',
 							url : 'api/compagnieAerienne/' + self.compagnieAerienne.id,

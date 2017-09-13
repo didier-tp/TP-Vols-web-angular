@@ -9,11 +9,11 @@
 		</tr>
 		<tr ng-repeat="compagnieAerienne in compagnieAerienneCtrl.compagniesAerienne">
 			<td>{{compagnieAerienne.id}}</td>
-			<td>{{compagnieAerienne.version}}</td>
+		
 			<td>{{compagnieAerienne.nom}}</td>
 			
 			<td><button type="button" class="btn btn-info btn-xs"
-					ng-click="CompagnieAerienneCtrl.edit(compagnieAerienne.id)">
+					ng-click="compagnieAerienneCtrl.edit(compagnieAerienne.id)">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 				<button type="button" class="btn btn-danger btn-xs"
@@ -22,7 +22,7 @@
 				</button></td>
 		</tr>
 		<tr>
-			<td colspan="11"><button type="button"
+			<td colspan="3"><button type="button"
 					class="btn btn-success btn-md" ng-click="compagnieAerienneCtrl.add()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button></td>

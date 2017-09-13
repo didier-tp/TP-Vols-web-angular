@@ -76,8 +76,6 @@ public class AeroportRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			aeroport.setId(id);
-			aeroport.setVersion(tmp.getVersion());
 			daoAeroport.update(aeroport);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
