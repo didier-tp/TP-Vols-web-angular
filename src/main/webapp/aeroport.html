@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+
+<fieldset>
+	<legend>Aeroport</legend>
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Nom Aéroport</th>
+
+		</tr>
+		<tr ng-repeat="aeroport in aeroportCtrl.aeroports">
+			<td>{{aeroport.id}}</td>
+			<td>{{aeroport.nom}}</td>
+		
+			<td><button type="button" class="btn btn-info btn-xs"
+					ng-click="aeroportCtrl.edit(reservation.id)">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger btn-xs"
+					ng-click="aeroportCtrl.remove(aeroport.id)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button></td>
+		</tr>
+		<tr>
+			<td colspan="4"><button type="button"
+					class="btn btn-success btn-md" ng-click="aeroportCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+	</table>
+	
+</fieldset>
