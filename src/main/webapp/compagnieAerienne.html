@@ -1,34 +1,65 @@
-<!DOCTYPE html>
-<html ng-app="PremierPas">
+<meta charset="UTF-8">
+<fieldset>
+	<legend>CompagnieAerienne</legend>
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Version</th>
+			<th>Nom</th>
+			<!-- <th>Liste des compagnies</th> -->
+			<th></th>
+		</tr>
+		<tr ng-repeat="compagnieAerienne in compagnieAerienneCtrl.compagnieAerienne">
+			<td>{{compagnieAerienne.id}}</td>
+			<td>{{compagnieAerienne.nom}}</td>
+			<td>{{compagnieAerienne.version}}</td>
+			
+			<td><button type="button" class="btn btn-info btn-xs"
+					ng-click="CompagnieAerienneCtrl.edit(compagnieAerienne.id)">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
+				<button type="button" class="btn btn-danger btn-xs"
+					ng-click="compagnieAerienneCtrl.remove(compagnieAerienne.id)">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button></td>
+		</tr>
+		<tr>
+			<td colspan="11"><button type="button"
+					class="btn btn-success btn-md" ng-click="compagnieAerienneCtrl.add()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button></td>
+	</table>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-    <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controllers/****.js"></script>
-    <script type="text/javascript" src="js/controllers/****.js"></script>
-</head>
-
-<body>
-
-    <div class="container" ng-controller="HomeController as homeCtrl">
-
-        <ul class="nav nav-pills">
-            <li ng-class="{active:homeCtrl.isTab('home')}"><a ng-click="homeCtrl.setTab('home')">Accueil</a></li>
-            <li ng-class="{active:homeCtrl.isTab('*******')}"><a ng-click="homeCtrl.setTab('*****')">******</a></li>
-            <li ng-class="{active:homeCtrl.isTab('******')}"><a ng-click="homeCtrl.setTab('*******')">*********</a></li>
-        </ul>
-
-        <********-manager ng-show="homeCtrl.isTab('******')">
-        </********-manager>
-
-
-
-    </div>
-
-</body>
-
-</html>
+	<div class="panel panel-default" ng-show="compagnieAerienneCtrl.compagnieAerienne">
+		<div class="panel-heading">Editer une compagnie aerienne :
+			{{compagnieAerienneForm.$valid}}</div>
+		<div class="panel-body">
+			<form name="compagnieAerienneCtrl.compagnieAerienneForm" class="form-horizontal" novalidate>
+				<input type="hidden" id="id" ng-model="compagnieAerienneCtrl.eleve.id">
+				<input type="hidden" id="version" ng-model="compagnieAerienneCtrl.compagnieAerienne.version">
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="nom">Nom:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="nom"
+							ng-model="compagnieAerienneCtrl.eleve.nom" required>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-success"
+							ng-click="compagnieAerienneCtrl.compagnieAerienneForm.$valid && compagnieAerienneCtrl.save()">
+							<span class="glyphicon glyphicon-floppy-disk"></span>
+						</button>
+					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-default"
+							ng-click="compagnieAerienneCtrl.cancel()">Annuler</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</fieldset>
