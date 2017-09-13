@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import vol.metier.dao.VolDao;
+import vol.metier.model.Views;
 import vol.metier.model.Vol;
 
 /**
@@ -31,6 +34,7 @@ public class VolRestController {
 	private VolDao daoVol;
 
 	@RequestMapping(value = "/vol", method = RequestMethod.GET)
+	@JsonView(Views.Vol.class)
 	public ResponseEntity<List<Vol>> list() {
 		return new ResponseEntity<>(daoVol.findAll(), HttpStatus.OK);
 	}
@@ -45,6 +49,7 @@ public class VolRestController {
 	}
 
 	@RequestMapping(value = "/vol/{id}", method = RequestMethod.GET)
+	@JsonView(Views.Vol.class)
 	public ResponseEntity<Vol> find(@PathVariable("id") Long id) {
 		Vol tmp = daoVol.find(id);
 		if (tmp == null) {
@@ -60,7 +65,7 @@ public class VolRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			daoVol.delete(tmp);
+			daoVol.delete(tmp.getId());
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
@@ -71,7 +76,9 @@ public class VolRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			daoVol.update(tmp);
+			vol.setId(tmp.getId());
+			vol.setVersion(tmp.getVersion());
+			daoVol.update(vol);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 	}
