@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module("PremierPas-Ville", []);
+	var app = angular.module("Ville", []);
 
 	app.directive("villeManager", function() {
 		return {
@@ -29,11 +29,10 @@
 					$http({
 						method : 'GET',
 						url : 'api/ville/' + id
-					}).then(
-							function(response) {
-								self.ville = response.data;
-							}, function(response) {
-							});
+					}).then(function(response) {
+						self.ville = response.data;
+					}, function(response) {
+					});
 				};
 
 				self.save = function() {
