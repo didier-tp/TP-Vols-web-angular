@@ -67,9 +67,12 @@ public class VilleRestController {
 	@RequestMapping(value = "/ville/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody Ville ville) {
 		Ville tmp = daoVille.find(id);
+		
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
+			ville.setId(id);
+			ville.setVersion(tmp.getVersion());
 			daoVille.update(ville);
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
