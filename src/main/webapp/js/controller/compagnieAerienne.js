@@ -4,7 +4,7 @@
 	app.directive("compagnieAerienneManager", function() {
 		return {
 			restrict : 'E',
-			templateUrl : 'CompagnieAerienne.html',
+			templateUrl : 'compagnieAerienne.html',
 			controller : function($http) {
 				var self = this;
 				self.compagniesAerienne = []; //
@@ -14,7 +14,7 @@
 				self.list = function() {
 					$http({
 						method : 'GET',
-						url : 'api/CompagnieAerienne'
+						url : 'api/compagnieAerienne'
 					}).then(function(response) {
 						self.compagniesAerienne = response.data; //
 					}, function(response) {
@@ -31,13 +31,13 @@
 						url : 'api/compagnieAerienne/' + id
 					}).then(
 							function(response) {
-								self.reservation = response.data;
+								self.compagnieAerienne = response.data;
 							}, function(response) {
 							});
 				};
 
 				self.save = function() {
-					if (self.reservation.id != null) {
+					if (self.compagnieAerienne.id != null) {
 						$http({
 							method : 'PUT',
 							url : 'api/compagnieAerienne/' + self.compagnieAerienne.id,
@@ -64,7 +64,7 @@
 				self.remove = function(id) {
 					$http({
 						method : 'DELETE',
-						url : 'api/reservation/' + id
+						url : 'api/compagnieAerienne/' + id
 					}).then(function(response) {
 						self.list();
 					}, function(response) {
@@ -73,14 +73,14 @@
 				};
 
 				self.cancel = function() {
-					self.reservation = null;
-					self.reservationForm.$setPristine();
+					self.compagnieAerienne = null;
+					self.compagnieAerienneForm.$setPristine();
 				};
 
 				self.list();
 
 			},
-			controllerAs : 'reservationCtrl'
+			controllerAs : 'compagnieAerienneCtrl'
 		};
 	});
 })();

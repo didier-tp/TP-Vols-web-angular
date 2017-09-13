@@ -3,19 +3,17 @@
 	<legend>CompagnieAerienne</legend>
 	<table class="table table-striped">
 		<tr>
-			<th>Id</th>
-			<th>Version</th>
-			<th>Nom</th>
-			<!-- <th>Liste des compagnies</th> -->
+			<th>Identifiant: </th>
+			<th>Nom: </th>			
 			<th></th>
 		</tr>
-		<tr ng-repeat="compagnieAerienne in compagnieAerienneCtrl.compagnieAerienne">
+		<tr ng-repeat="compagnieAerienne in compagnieAerienneCtrl.compagniesAerienne">
 			<td>{{compagnieAerienne.id}}</td>
+		
 			<td>{{compagnieAerienne.nom}}</td>
-			<td>{{compagnieAerienne.version}}</td>
 			
 			<td><button type="button" class="btn btn-info btn-xs"
-					ng-click="CompagnieAerienneCtrl.edit(compagnieAerienne.id)">
+					ng-click="compagnieAerienneCtrl.edit(compagnieAerienne.id)">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</button>
 				<button type="button" class="btn btn-danger btn-xs"
@@ -24,7 +22,7 @@
 				</button></td>
 		</tr>
 		<tr>
-			<td colspan="11"><button type="button"
+			<td colspan="3"><button type="button"
 					class="btn btn-success btn-md" ng-click="compagnieAerienneCtrl.add()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button></td>
@@ -35,14 +33,14 @@
 			{{compagnieAerienneForm.$valid}}</div>
 		<div class="panel-body">
 			<form name="compagnieAerienneCtrl.compagnieAerienneForm" class="form-horizontal" novalidate>
-				<input type="hidden" id="id" ng-model="compagnieAerienneCtrl.eleve.id">
+				<input type="hidden" id="id" ng-model="compagnieAerienneCtrl.compagnieAerienne.id">
 				<input type="hidden" id="version" ng-model="compagnieAerienneCtrl.compagnieAerienne.version">
 				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="nom">Nom:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" id="nom"
-							ng-model="compagnieAerienneCtrl.eleve.nom" required>
+							ng-model="compagnieAerienneCtrl.compagnieAerienne.nom" required>
 					</div>
 				</div>
 				
