@@ -19,7 +19,7 @@ import vol.metier.model.Login;
 
 @RestController
 public class LoginRestController {
-	
+
 	@Autowired
 	private LoginDao daoLogin;
 
@@ -53,7 +53,7 @@ public class LoginRestController {
 		if (tmp == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			daoLogin.delete(tmp);
+			daoLogin.delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}

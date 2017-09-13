@@ -19,29 +19,28 @@ import com.fasterxml.jackson.annotation.JsonView;
 import vol.metier.dao.VilleDao;
 import vol.metier.model.Views;
 import vol.metier.model.Ville;
-import vol.metier.model.Vol;
 
 @RestController
 public class VilleRestController {
-	
+
 	@Autowired
 	private VilleDao daoVille;
-	
+
 	@RequestMapping(value = "/ville", method = RequestMethod.GET)
 	@JsonView(Views.Ville.class)
 	public ResponseEntity<List<Ville>> list() {
 		return new ResponseEntity<>(daoVille.findAll(), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/ville", method = RequestMethod.POST)
 	public ResponseEntity<Void> create(@RequestBody Ville ville, UriComponentsBuilder uCB) {
-			daoVille.create(ville);
-			URI uri = uCB.path("/ville/{id}").buildAndExpand(ville.getId()).toUri();
-			HttpHeaders header = new HttpHeaders();
-			header.setLocation(uri);
-			return new ResponseEntity<>(header, HttpStatus.CREATED);
+		daoVille.create(ville);
+		URI uri = uCB.path("/ville/{id}").buildAndExpand(ville.getId()).toUri();
+		HttpHeaders header = new HttpHeaders();
+		header.setLocation(uri);
+		return new ResponseEntity<>(header, HttpStatus.CREATED);
 	}
-	
+
 	@RequestMapping(value = "/ville/{id}", method = RequestMethod.GET)
 	@JsonView(Views.Ville.class)
 	public ResponseEntity<Ville> find(@PathVariable("id") Long id) {
@@ -52,7 +51,7 @@ public class VilleRestController {
 			return new ResponseEntity<Ville>(tmp, HttpStatus.OK);
 		}
 	}
-	
+
 	@RequestMapping(value = "/ville/{id}", method = RequestMethod.DELETE)
 
 	public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
@@ -64,7 +63,7 @@ public class VilleRestController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
-	
+
 	@RequestMapping(value = "/ville/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable("id") Long id, @RequestBody Ville ville) {
 		Ville tmp = daoVille.find(id);
@@ -75,21 +74,5 @@ public class VilleRestController {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 	}
-	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
