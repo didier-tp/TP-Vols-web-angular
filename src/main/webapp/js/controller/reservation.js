@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module("PremierPas-Reservation", []);
+	var app = angular.module("Reservation", []);
 
 	app.directive("reservationManager", function() {
 		return {
@@ -48,11 +48,11 @@
 						}, function(response) {
 						});
 					} else {
-						console.log(self.formateur);
+						console.log(self.reservation);
 						$http({
 							method : 'POST',
-							url : 'api/formateur/',
-							data : self.formateur
+							url : 'api/reservation/',
+							data : self.reservation
 						}).then(function(response) {
 							self.cancel();
 							self.list();
@@ -64,7 +64,7 @@
 				self.remove = function(id) {
 					$http({
 						method : 'DELETE',
-						url : 'api/formateur/' + id
+						url : 'api/reservation/' + id
 					}).then(function(response) {
 						self.list();
 					}, function(response) {
@@ -73,14 +73,14 @@
 				};
 
 				self.cancel = function() {
-					self.formateur = null;
-					self.formateurForm.$setPristine();
+					self.reservation = null;
+					self.reservationForm.$setPristine();
 				};
 
 				self.list();
 
 			},
-			controllerAs : 'formateurCtrl'
+			controllerAs : 'reservationCtrl'
 		};
 	});
 })();
