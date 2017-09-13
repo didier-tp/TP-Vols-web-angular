@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module("Login", []);
+	var app = angular.module("Passager", []);
 
 	
 	app.directive("passagerManager", function() {
