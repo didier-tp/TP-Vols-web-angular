@@ -25,23 +25,25 @@
 	<div class="container" ng-controller="HomeController as homeCtrl">
 
 		<ul class="nav nav-pills">
-			<li ng-class="{active:homeCtrl.isTab('home')}"><a
-				ng-click="homeCtrl.setTab('home')">Accueil</a></li>
-			<li ng-class="{active:homeCtrl.isTab('ville')}"><a
+			<li ng-class="{active:homeCtrl.isTab('LOG IN')}"><a
+				ng-click="homeCtrl.setTab('login')">Accueil</a></li>
+			<!--  <li ng-class="{active:homeCtrl.isTab('home')}"><a
+				ng-click="homeCtrl.setTab('home')">Accueil</a></li> -->
+			<li ng-class="{(active:homeCtrl.isTab('ville'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('ville')">Ville</a></li>
-			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('vol'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('vol')">Vols</a></li>
-			<li ng-class="{active:homeCtrl.isTab('compagnie-aerienne')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('compagnie-aerienne'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('compagnie-aerienne')">Compagnie Aérienne</a></li>
-			<li ng-class="{active:homeCtrl.isTab('client')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('client'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('client')">Client</a></li>
-			<li ng-class="{active:homeCtrl.isTab('login')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('login'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('login')">Login</a></li>
-			<li ng-class="{active:homeCtrl.isTab('passager')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('passager'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('passager')">Passager</a></li>
-			<li ng-class="{active:homeCtrl.isTab('reservation')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('reservation'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('reservation')">Réservation</a></li>
-			<li ng-class="{active:homeCtrl.isTab('aeroport')}"><a
+			<li ng-class="{(active:homeCtrl.isTab('aeroport'))&&(homeCtrl.isConnected())}"><a
 				ng-click="homeCtrl.setTab('aeroport')">Aéroports</a></li>
 		</ul>
 

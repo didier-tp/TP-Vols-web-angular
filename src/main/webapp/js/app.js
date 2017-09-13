@@ -4,18 +4,21 @@
 					"Passager", "Reservation", "Ville" ]);
 
 	app.controller("HomeController", function($http) {
-		self = this;
+		// self = this;
 		self.tab = "home";
-		//self.tab="login";
-		//self.connect=false;
+		self.tab = "login";
+		self.connect = false;
 		self.setTab = function(val) {
 			self.tab = val;
 		};
-		
+
+		self.connect = function() {
+			self.connect = true;
+		};
 		self.isTab = function(val) {
 			return this.tab === val;
 		};
-		
+
 		self.isConnected = function() {
 			return this.connect == true;
 		};
