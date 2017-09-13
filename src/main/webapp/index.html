@@ -31,8 +31,8 @@
 				ng-click="homeCtrl.setTab('ville')">Ville</a></li>
 			<li ng-class="{active:homeCtrl.isTab('vol')}"><a
 				ng-click="homeCtrl.setTab('vol')">Vols</a></li>
-			<li ng-class="{active:homeCtrl.isTab('compagnieAerienne')}"><a
-				ng-click="homeCtrl.setTab('compagnieAerienne')">Compagnie Aérienne</a></li>
+			<li ng-class="{active:homeCtrl.isTab('compagnie-aerienne')}"><a
+				ng-click="homeCtrl.setTab('compagnie-aerienne')">Compagnie Aérienne</a></li>
 			<li ng-class="{active:homeCtrl.isTab('client')}"><a
 				ng-click="homeCtrl.setTab('client')">Client</a></li>
 			<li ng-class="{active:homeCtrl.isTab('login')}"><a
@@ -47,9 +47,9 @@
 
 		<ville-manager ng-show="homeCtrl.isTab('ville')"> </ville-manager>
 		<vol-manager ng-show="homeCtrl.isTab('vol')"> </vol-manager>
-		<compagnieAerienne-manager
-			ng-show="homeCtrl.isTab('compagnieAerienne')">
-		</compagnieAerienne-manager>
+		<compagnie-aerienne-manager
+			ng-show="homeCtrl.isTab('compagnie-aerienne')">
+		</compagnie-aerienne-manager>
 		<client-manager ng-show="homeCtrl.isTab('client')"> </client-manager>
 		<login-manager ng-show="homeCtrl.isTab('login')"> </login-manager>
 		<passager-manager ng-show="homeCtrl.isTab('passager')">
